@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SMART CONTROL</title>
+
+  <script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
+
+  <style>
+    body{
+      font-family: Arial;
+      text-align:center;
+      margin-top:100px;
+    }
+
+    button{
+      width:150px;
+      height:60px;
+      font-size:25px;
+      margin:10px;
+    }
+  </style>
+
+</head>
+<body>
+
+<h1>SMART CONTROL</h1>
+
+<button onclick="lampOn()">ON</button>
+
+<button onclick="lampOff()">OFF</button>
+
+<script>
+
+const client = mqtt.connect('wss://broker.hivemq.com:8884/mqtt');
+
+client.on('connect', () => {
+  console.log('Connected');
+});
+
+function lampOn(){
+  client.publish('SMART CONTROL', 'ON');
+}
+
+function lampOff(){
+  client.publish('SMART CONTROL', 'OFF');
+}
+
+</script>
+
+</body>
+</html>
